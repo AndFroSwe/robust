@@ -1,0 +1,38 @@
+
+#include "mbed.h"
+
+//------------------------------------
+// Sends 1 AD-values on serial as char every chosen second
+// Hyperterminal configuration
+// 921600 bauds, 8-bit data, no parity
+// This is written for LPC11U24 controller.
+//------------------------------------
+
+
+Serial pc(USBTX, USBRX);
+ AnalogIn temperature(p17);
+ //AnalogIn strom(p16);
+
+ 
+ 
+ // Toggle the blinking led after 5 seconds
+ 
+ 
+Ticker timer;
+DigitalOut led1(LED1);
+DigitalOut led2(LED2);
+
+void attime() {
+    int t=temperature*255;// read Analog p19
+    pc.printf("%c", (char)t);
+    // Code here
+}
+ 
+int main() {
+    pc.baud(921600);
+    timer.attach(&attime, 0.0000125);   //80 kHz
+    while(1) {
+        
+    }
+}
+ 
