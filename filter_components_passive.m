@@ -9,6 +9,7 @@ C = 33e-6;       % [F]
 fc= 1e3;   % Cutoff frequency [Hz]
 
 %% Calculate parameters
+% Calculate components
 if R == 0 && C ~= 0
     R = (2*pi*fc*C)^(-1);
     fprintf('For fc=%d Hz and capacitance %0.2f microF \n R=%0.2f ohm\r', fc, C*1e6, R)
@@ -18,4 +19,7 @@ elseif C == 0 && R ~= 0
 else
     error('One R or C must be 0')
 end
-    
+
+% Time constant
+tau = R*C;
+fprintf('Time constant is %0.2f microS\r', tau*1e6) 
