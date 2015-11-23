@@ -15,9 +15,9 @@ dB = @(in) 20*log10(in);
 
 freq = 1:1e3;
 for i = freq
-    signal_filtered = A(freq(i), 10e6, 16e-9);  
-    amp(i) = dB(abs(signal_filtered));
-    arg(i) = phase(signal_filtered);
+    signal_filtered = A(freq(i), 
+    amp(i) = dB(abs(A(freq(i), Ri, Rf, C)));
+    arg(i) = phase((A(freq(i), Ri, Rf, C)));
 %     amp(i) = abs(A(freq(i), Ri, Rf, C));
 end
 
@@ -28,7 +28,7 @@ title('Bode plot of filter')
 xlabel('Rad/s')
 ylabel('Amplification')
 subplot(2,1,2)
-plot(freq, arg,'r')
+loglog(freq, arg,'r')
 xlabel('Rad/s')
 ylabel('Phase')
 grid on
