@@ -3403,8 +3403,8 @@ type RDH, grid 15 mm</description>
 <part name="ACT_IN" library="con-molex" deviceset="KK-156-2" device=""/>
 <part name="VCC_5V" library="con-molex" deviceset="KK-156-2" device=""/>
 <part name="PASS_IN" library="con-molex" deviceset="KK-156-2" device=""/>
-<part name="X6" library="con-molex" deviceset="KK-156-2" device="" value="ACT_OUT"/>
-<part name="X7" library="con-molex" deviceset="KK-156-2" device="" value="PASS_OUT"/>
+<part name="X6" library="con-molex" deviceset="KK-156-2" device=""/>
+<part name="X7" library="con-molex" deviceset="KK-156-2" device=""/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
