@@ -1,38 +1,53 @@
-
 #include "mbed.h"
 
-//------------------------------------
-// Sends 1 AD-values on serial as char every chosen second
-// Hyperterminal configuration
-// 921600 bauds, 8-bit data, no parity
-// This is written for LPC11U24 controller.
-//------------------------------------
-
+// Define pins
 
 Serial pc(USBTX, USBRX);
- AnalogIn temperature(p17);
- //AnalogIn strom(p16);
+AnalogIn inSignal(p17);
 
- 
- 
- // Toggle the blinking led after 5 seconds
- 
- 
 Ticker timer;
-DigitalOut led1(LED1);
-DigitalOut led2(LED2);
+float yf = 0;
+float y_old1 = 0;
+float y_old2 = 0;
+float yf_old1 = 0;
+float yf_old2 = 0;
 
-void attime() {
-    int t=temperature*255;// read Analog p19
-    pc.printf("%c", (char)t);
-    // Code here
+float fir(float y)
+{
+    yf = 0.0690*y_old2 + 0.8621*y_old1 + 0.0690*y;     
+    y_old1 = y;
+    y_old2 = y_old1;
+    return yf;
 }
- 
-int main() {
+
+
+float butter_low_2(float y)
+{
+    // Filter time
+    yf = 0.978*yf_old2 - 1.978*yf_old1 + 1 + 6.101/100000*y_old2 + 0.000122*y_old1 + 6.101/100000*y;
+    y_old1 = y;
+    y_old2 = y_old1;
+    yf_old1 = yf;
+    yf_old2 = yf_old1; 
+    return yf;
+}
+
+void attime()   // What is done every tick
+{
+    float y = inSignal*255;
+    yf = butter_low_2(y);
+    pc.printf("%c", (char)yf);   
+}
+
+
+int main() 
+{
     pc.baud(921600);
-    timer.attach(&attime, 0.0000125);   //80 kHz
-    while(1) {
+    timer.attach(&attime, 0.0000125);
+    
+    while (1)
+    {
         
     }
+    
 }
- 

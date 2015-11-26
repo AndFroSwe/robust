@@ -5,7 +5,7 @@ delete(timerfindall);
 global data;
 
 % Check device manage which COM port to use
-data.serialObject = serial('COM14', 'BaudRate', 921600, 'DataBits', 8, 'StopBits', 1, 'InputBufferSize', 4096);
+data.serialObject = serial('COM20', 'BaudRate', 921600, 'DataBits', 8, 'StopBits', 1, 'InputBufferSize', 4096);
 data.L = 4096;                                  % Number of data points                                 
 data.f = 80000;                                 % Sampling frequency (microcontroller)
 data.T = 1/data.f;                              % Sampling period (microcontroller)
