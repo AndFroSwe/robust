@@ -1,7 +1,7 @@
 % Design for active filter, non inverting
 clc; close all; clear all;
 %% Define parameters
-Ri = 300; % Input resistance [ohm]
+Ri = ; % Input resistance [ohm]
 Rf = 300; % Feedback resistance [ohm]
 C = 100e-12;  % Capacitance [F]
 

@@ -1,10 +1,10 @@
 clear all, close all, clc;
 
 % Inputs
-fc = 200;
-fs = 80e3;  % Sampling freq
+fc = 600;
+fs = 10e3;  % Sampling freq
 filter_order = 2;
-filter_type = 'low';
+filter_type = 'high';
 
 % In rads
 Ts = 1/fs;

@@ -1,10 +1,10 @@
 close all;clear; clc;
 format compact
 
-f_samp = 80e3; %Hz
+f_samp = 10e3; %Hz
 f_nyq = f_samp/2; %Hz
 cutoff = 200; %Hz
-numtaps = 3 %Order+1 of the filter
+numtaps = 2 %Order+1 of the filter
 
 %Nyquistfrekvensen är den högsta frekvensen som kan mätas innan vikning
 %inträffar.

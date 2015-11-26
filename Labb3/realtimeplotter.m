@@ -5,9 +5,9 @@ delete(timerfindall);
 global data;
 
 % Check device manage which COM port to use
-data.serialObject = serial('COM20', 'BaudRate', 921600, 'DataBits', 8, 'StopBits', 1, 'InputBufferSize', 4096);
+data.serialObject = serial('COM16', 'BaudRate', 921600, 'DataBits', 8, 'StopBits', 1, 'InputBufferSize', 4096);
 data.L = 4096;                                  % Number of data points                                 
-data.f = 80000;                                 % Sampling frequency (microcontroller)
+data.f = 10000;                                 % Sampling frequency (microcontroller)
 data.T = 1/data.f;                              % Sampling period (microcontroller)
 data.fVec = data.f/2*linspace(0,1,data.L/2);    % Frequency vector for FFT
 data.fScreen = 50;                              % Update frequency for screen

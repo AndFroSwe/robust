@@ -20,17 +20,41 @@ float fir(float y)
     return yf;
 }
 
+float butter_low_1(float y)
+{
+    // Filter time
+    yf = 0.8816*yf_old1 + 0.05919*y_old1 + 0.05919*y;
+    y_old1 = y;
+    yf_old1 = yf;
+    return yf;
+}
 
 float butter_low_2(float y)
 {
     // Filter time
-    yf = 0.978*yf_old2 - 1.978*yf_old1 + 1 + 6.101/100000*y_old2 + 0.000122*y_old1 + 6.101/100000*y;
+    yf = -0.8372*yf_old2 + 1.823*yf_old1 + 0.003622*y_old2 + 0.007243*y_old1 + 0.003622*y;
     y_old1 = y;
     y_old2 = y_old1;
     yf_old1 = yf;
     yf_old2 = yf_old1; 
     return yf;
 }
+
+float butter_high_2(float y)
+{
+    // Filter time
+    yf = -0.5869*yf_old2 + 1.475*yf_old1 + 0.7656*y_old2 - 1.531*y_old1 + 0.7656*y;
+    y_old1 = y;
+    y_old2 = y_old1;
+    yf_old1 = yf;
+    yf_old2 = yf_old1; 
+    return yf;
+}
+
+float no_filt(float y)
+{
+    return y;  
+} 
 
 void attime()   // What is done every tick
 {
@@ -43,7 +67,7 @@ void attime()   // What is done every tick
 int main() 
 {
     pc.baud(921600);
-    timer.attach(&attime, 0.0000125);
+    timer.attach(&attime, 0.0001);
     
     while (1)
     {
