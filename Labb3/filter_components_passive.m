@@ -4,9 +4,9 @@ clc; close all; clear all;
 %% Define parameters
 % Define unknown component as 0
 
-R = 4700;       % [ohm]
-C = 0;       % [F]
-fc= 5e3;   % Cutoff frequency [Hz]
+R = 0;       % [ohm]
+C = 100e-9;       % [F]
+fc= 5e2;   % Cutoff frequency [Hz]
 
 %% Calculate parameters
 % Calculate components

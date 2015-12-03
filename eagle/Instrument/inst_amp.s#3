@@ -12664,8 +12664,8 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="X1" library="con-molex" deviceset="22-23-2021" device="" value="VCC +/-"/>
 <part name="X2" library="con-molex" deviceset="22-23-2021" device="" value="Vin"/>
 <part name="X3" library="con-molex" deviceset="22-23-2021" device="" value="Vout"/>
-<part name="C3" library="rcl" deviceset="CPOL-EU" device="E5-10.5" value="0,47µF"/>
-<part name="C4" library="rcl" deviceset="CPOL-EU" device="E5-10.5" value="0,47µF"/>
+<part name="C3" library="rcl" deviceset="CPOL-EU" device="E5-10.5" value="100µF"/>
+<part name="C4" library="rcl" deviceset="CPOL-EU" device="E5-10.5" value="100µF"/>
 <part name="R3" library="rcl" deviceset="R-EU_" device="0414/15" value="0R2"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>

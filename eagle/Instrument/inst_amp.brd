@@ -2635,8 +2635,8 @@ design rules under a new name.</description>
 <attribute name="MF" value="" x="67.31" y="24.13" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_FARNELL" value="9605304" x="67.31" y="24.13" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="R2" library="rcl" package="0207/10" value="180R" x="73.66" y="33.02"/>
-<element name="R4" library="rcl" package="0207/10" value="360R" x="60.96" y="33.02"/>
+<element name="R2" library="rcl" package="0207/10" value="900R" x="73.66" y="33.02"/>
+<element name="R4" library="rcl" package="0207/10" value="1100R" x="60.96" y="33.02"/>
 <element name="C6" library="rcl" package="C050-025X075" value="100nF" x="63.5" y="13.97" rot="R270"/>
 <element name="C7" library="rcl" package="C050-025X075" value="100nF" x="77.47" y="25.4" rot="R180"/>
 <element name="C5" library="rcl" package="C050-024X044" value="18nF" x="41.91" y="38.1" rot="R180"/>

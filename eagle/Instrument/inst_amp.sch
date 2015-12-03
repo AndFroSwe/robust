@@ -15744,8 +15744,8 @@ Source: www.mpe-connector.de / garry_shortform_2012.pdf</description>
 <part name="GND3" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="IC2" library="burr-brown" deviceset="OPA658" device="P" value="OP07C"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="0207/10" value="180R"/>
-<part name="R4" library="rcl" deviceset="R-EU_" device="0207/10" value="360R"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="0207/10" value="900R"/>
+<part name="R4" library="rcl" deviceset="R-EU_" device="0207/10" value="1100R"/>
 <part name="C6" library="rcl" deviceset="C-EU" device="050-025X075" value="100nF"/>
 <part name="C7" library="rcl" deviceset="C-EU" device="050-025X075" value="100nF"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
