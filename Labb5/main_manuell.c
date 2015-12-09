@@ -3,15 +3,14 @@
  
 #define H 1
 #define L 0
- 
+
  float amp(float volt){
      // Linear calculation of ampere 
      float k = 0.3373;
-     float m = -0.72;
+     float m = -0.6133;
      
      return k*volt + m;
      }
-
 
 int main() {
     /*
@@ -21,6 +20,7 @@ int main() {
     BRAKE on pin    PC0     p30
     VREF on pin     DAC0    p18
     MEAS_IN on pin  ADC0    p15
+    CONTROL_POT_IN  ADC1    p16
     */
     
     // Define pins
@@ -41,46 +41,40 @@ int main() {
     // Initiate
     float measured = 0;
     float control = 0;
-    float dty = 0;
+    float dty = 0.5;
     float dty_old = dty;
     
     // Change here
     float freq = 50000;                     // Frequency in Hz   
+    float span = 90;                        // Evenly distributed span [%]
     // Calculate
     float pertid = 1/freq;
-    //float low_lim = (100 - span)/2/100;    
-    float i_max = 0.1;
-    float i_min = -0.1;
-    float P = 0.01;
+    float low_lim = (100 - span)/2/100;         
 
     clear_disp(); 
 
     while(1) {
-        // For use with changable PWM
-        PHASE.period(pertid);
-        PHASE.pulsewidth(pertid*dty);
+        
+        
+        
         // Read ADC
         measured = MEAS_IN.read();
         control = CONTROL.read();
-        // Calculate reference signal
-        float ref = i_min + (i_max - i_min)*control;
-        // Regulator
-        float e = ref - amp(measured*3.3);
-        // Regulation
-        dty = dty_old - e*P;
-        dty_old = dty;
-        if (dty > 1){ dty = 1;}
-        else if (dty < 0){ dty = 0;}
+        // Calculate Duty Cycle with limited span
+        float dty = low_lim + control*span/100;
+        
+        // For use with changable PWM
+        PHASE.period(pertid);
+        PHASE.pulsewidth(pertid*dty);
+    
         // Write display
-        /*
         move_cursor(1,1);
-        dprintf("Ref: %f A", ref);
+        dprintf("Frequency: %i Hz", int(freq));
         move_cursor(2,1);
         dprintf("PWM: %i %%  ", int(dty*100)); 
         move_cursor(3, 1);
         dprintf("ADC read: %f V", measured*3.3);
         move_cursor(4, 1);
         dprintf("I: %f  A", amp(measured*3.3));
-        */
         }
 }

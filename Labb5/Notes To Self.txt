@@ -1,10 +1,12 @@
 ﻿//Till nästa gång:
-//1. Isolera och felsök instrumentförstärkare.
-//2. Fixa en 3.3v försörjning som ska driva en vridpot för justering. 
-//3. Skriva PID.
-//4. Fixa VCC +/- och GND så att krokodiler inte beheövs.
-
-//Vi har felsökt alla moduler och alla fungerar bra utom instrumentförstärkare och aktivt filter (kolla fc)?
+//1. Fixa en 3.3v försörjning som ska driva en vridpot för justering. 
+//2. Skriva PID.
+//3. Fixa VCC +/- och GND så att krokodiler inte beheövs.
 
 //OBS! Filterkortets aktiva del använder positiv spänning och jord från FET OBS!
 Tecknet på PID beror på hållet sensorn är ikopllad.
+
+
+AVKLARAT:
+
+//1. Isolera och felsök instrumentförstärkare.(Fel. pga common mode)
