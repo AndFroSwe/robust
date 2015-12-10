@@ -6,8 +6,8 @@
 
  float amp(float volt){
      // Linear calculation of ampere 
-     float k = 0.3373;
-     float m = -0.6133;
+     float k = 0.394;
+     float m = -0.7393;
      
      return k*volt + m;
      }
@@ -42,11 +42,10 @@ int main() {
     float measured = 0;
     float control = 0;
     float dty = 0.5;
-    float dty_old = dty;
     
     // Change here
     float freq = 50000;                     // Frequency in Hz   
-    float span = 90;                        // Evenly distributed span [%]
+    float span = 100;                        // Evenly distributed span [%]
     // Calculate
     float pertid = 1/freq;
     float low_lim = (100 - span)/2/100;         

@@ -6,12 +6,19 @@
  
  float amp(float volt){
      // Linear calculation of ampere 
-     float k = 0.3373;
-     float m = -0.72;
+     float k = 0.394;
+     float m = -0.7393;
      
      return k*volt + m;
      }
 
+float PWM(float I){
+    // I to PWM
+     float k = -1.3514;
+     float m = 0.5;
+     
+     return k*I + m;
+}
 
 int main() {
     /*
@@ -49,9 +56,9 @@ int main() {
     // Calculate
     float pertid = 1/freq;
     //float low_lim = (100 - span)/2/100;    
-    float i_max = 0.1;
-    float i_min = -0.1;
-    float P = 0.01;
+    float i_max = 0.37;
+    float i_min = -0.37;
+    float P = 0.1;
 
     clear_disp(); 
 
@@ -65,10 +72,10 @@ int main() {
         // Calculate reference signal
         float ref = i_min + (i_max - i_min)*control;
         // Regulator
-        float e = ref - amp(measured*3.3);
+        float e = PWM(ref) - PWM(amp(measured*3.3));
         // Regulation
-        dty = dty_old - e*P;
-        dty_old = dty;
+        dty += e*P;
+        // Guard
         if (dty > 1){ dty = 1;}
         else if (dty < 0){ dty = 0;}
         // Write display
